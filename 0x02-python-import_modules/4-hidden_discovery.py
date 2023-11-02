@@ -6,4 +6,3 @@ if __name__ == "__main":
     for name in dir(hidden_4):
         if not name.startswith("__"):
             print(name)
-
