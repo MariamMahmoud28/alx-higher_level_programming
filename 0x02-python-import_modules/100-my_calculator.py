@@ -22,5 +22,3 @@ elif operator == '/':
 else:
     print("Unknown operator. Available operators: +, -, * and /")
     sys.exit(1)
-
-print("{} {} {} = {}".format(a, operator, b, result))
