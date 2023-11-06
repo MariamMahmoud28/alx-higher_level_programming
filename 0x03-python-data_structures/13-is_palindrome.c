@@ -1,61 +1,35 @@
 #include "lists.h"
 
-/* Define a singly linked list structure */
-struct listint_t {
-    int n;
-    struct listint_t *next;
-};
+/**
+ * aux_palind - Recursive function to check if a linked list is a palindrome.
+ * @left: Pointer to the left end of the sublist.
+ * @right: Pointer to the right end of the sublist.
+ * Return: 1 if the sublist is a palindrome, 0 otherwise.
+ */
+int aux_palind(listint_t **left, listint_t *right) {
+    int is_palindrome;
 
-typedef struct listint_t listint_t;
+    if (right == NULL)
+        return 1;
 
-/* Function to reverse a linked list */
-listint_t *reverse_list(listint_t *head) {
-    listint_t *prev = NULL, *current = head, *next = NULL;
+    is_palindrome = aux_palind(left, right->next);
+    if (!is_palindrome)
+        return 0;
 
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
+    is_palindrome = (right->n == (*left)->n);
+    *left = (*left)->next;
 
-    return prev;
+    return is_palindrome;
 }
 
-/* Function to check if a linked list is a palindrome */
+/**
+ * is_palindrome - Checks if a linked list is a palindrome.
+ * @head: Pointer to the head of the linked list.
+ * Return: 1 if the linked list is a palindrome, 0 otherwise.
+ */
 int is_palindrome(listint_t **head) {
-    if (*head == NULL) {
-        return 1; // An empty list is considered a palindrome
-    }
+    if (*head == NULL || (*head)->next == NULL)
+        return 1;
 
-    listint_t *slow = *head;
-    listint_t *fast = *head;
-    listint_t *first_half = *head;
-    listint_t *prev = NULL;
-
-    // Use two pointers to find the middle of the list
-    while (fast != NULL && fast->next != NULL) {
-        fast = fast->next->next;
-        prev = slow;
-        slow = slow->next;
-    }
-
-    // Split the list into two halves
-    prev->next = NULL;
-
-    // Reverse the second half
-    listint_t *second_half = reverse_list(slow);
-
-    // Compare the two halves
-    while (first_half != NULL && second_half != NULL) {
-        if (first_half->n != second_half->n) {
-            // Not a palindrome
-            return 0;
-        }
-        first_half = first_half->next;
-        second_half = second_half->next;
-    }
-
-    // If all elements match, it's a palindrome
-    return 1;
+    return aux_palind(head, *head);
 }
