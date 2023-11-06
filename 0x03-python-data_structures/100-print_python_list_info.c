@@ -1,3 +1,4 @@
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include <stdio.h>
 
@@ -22,8 +23,8 @@ int main(int argc, char *argv[]) {
 
     // Create a Python list for testing
     PyObject *list = PyList_New(0);
-    PyList_Append(list, PyLong_FromLong(1));
     PyList_Append(list, PyUnicode_DecodeUTF8("Hello", 5, "strict"));
+    PyList_Append(list, PyLong_FromLong(42));
     PyList_Append(list, PyFloat_FromDouble(3.14));
 
     // Call the function to print list info
@@ -33,5 +34,4 @@ int main(int argc, char *argv[]) {
     Py_Finalize();
 
     return 0;
-}
 }
