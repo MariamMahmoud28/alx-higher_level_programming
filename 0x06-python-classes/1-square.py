@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Square moduule."""
+"""Square module."""
 
 class Square:
     """Defines a square."""
 
-    def __init__(seif, size):
+    def __init__(self, size):
         """Constructor.
 
         Args:
