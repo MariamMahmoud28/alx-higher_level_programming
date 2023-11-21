@@ -2,5 +2,5 @@
 """Square module."""
 
 class Square:
-    """Mariam mahmoud."""
+    """Defines a square."""
     pass
