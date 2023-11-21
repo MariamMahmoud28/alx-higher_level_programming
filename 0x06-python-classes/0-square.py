@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """square module."""
 
-class Square:
+class square:
     """mariam mahmoud."""
     pass
