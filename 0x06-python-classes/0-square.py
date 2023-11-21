@@ -2,5 +2,5 @@
 """square module."""
 
 class Square:
-    """mariam mahmoud"""
+    """mariam mahmoud."""
     pass
