@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 """Fetches https://intranet.hbtn.io/status."""
+
 import requests
 
-
 if __name__ == "__main__":
-    r = requests.get("https://intranet.hbtn.io/status")
+    # Send a GET request to the URL
+    response = requests.get("https://intranet.hbtn.io/status")
+    
+    # Print the response body
     print("Body response:")
-    print("\t- type: {}".format(type(r.text)))
-    print("\t- content: {}".format(r.text))
+    print(f"\t- type: {type(response.text)}")
+    print(f"\t- content: {response.text}")
+
